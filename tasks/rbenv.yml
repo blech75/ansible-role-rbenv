@@ -1,7 +1,11 @@
 ---
+# FIXME: figure out how to make this conditional based on path
+- name: Create dir for rbenv
+  file: path={{ rbenv_root_path }} state=directory owner=vagrant group=adm mode=g+rwxXs
+  become: true
 
 - name: Cloning rbenv repository
-  git: repo={{ rbenv_repo_path }} 
+  git: repo={{ rbenv_repo_path }}
        dest={{ rbenv_root_path }}
        update=no
        version={{ rbenv_version }}
